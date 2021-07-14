@@ -1,0 +1,33 @@
+Problem Statement for creating a Grievance submittin platform:
+--------------------------------------------------------------
+1. Divide your UI screen in 2 parts
+    a. Part A 
+    b. Part B
+2. Part A should display a form which collect the following details related to a grievance.
+    Form should contain the following details:
+    a. Email
+    b. Title
+    c. Description
+3. On submit, the grievance details should be displayed in the Part B and the form in Part A should be reset
+4. In Part B, when the grievance details are displayed, display 2 buttons
+    a. One button named 'Resolved' (displayed in green color). On clicking this button update the status grievance to resolved.
+    b. Other button named 'Rejected' (displayed in red color). On clicking this button update the status grievance to rejected.
+5. If the status of the grievance is null, display the above 2 buttons.
+    - else if the status is resolved, display a text 'Resolved' (in green color) instead of the above 2 buttons
+    - else if the status is rejected, display a text 'Rejected' (in red color) instead of the above 2 buttons
+------------
+React Hints:
+------------
+1. Maintain a state in the App.js with an array of grievance details. In the component render 2 components
+    a. Component A which renders the form
+        - On form submission collect the grievance details in an object and push them to the parent's state array
+            where we are maintaining the grievance details array.
+        - Using the concept of Parent-Child communication to acheive the above functionality.
+        - Before pushing details in to the array add a status field (= null) for each object.
+        - To reset the form on submission, use controlled inputs by using `value` attribute with input and textarea fields. 
+    b. Component B which renders the greviance details
+        - In the App.js, loop over the array of greviance details and render Component B
+            for each of the object.
+        - Pass a method as a prop to this component which updates the status of an greviance based on index.
+            trigger the above method, on button clicks in the child component (Resolved and Rejected buttons)
+        - Using the Parent-Child communication concept once again to achieve the above functionality.
